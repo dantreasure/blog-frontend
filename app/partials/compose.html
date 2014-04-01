@@ -5,35 +5,31 @@
 	<h6>*Zero shits will be given.</h6>
 </div>
 
-<form class="form-horizontal">
+<form class="form-horizontal" name="blog-post" ng-submit="submit()">
   <fieldset>
 	<legend>Compose</legend>
 	<div class="form-group">
 	  <label for="headline" class="col-lg-2 control-label">Headline</label>
 	  <div class="col-lg-10">
-		<input type="text" class="form-control" id="headline" placeholder="This one time at bandcamp ...">
+		<input type="text" class="form-control" id="headline" placeholder="This one time at bandcamp ..." ng-model="formData.title">
 	  </div>
 	</div>	
 	<div class="form-group">
 	  <label for="highlight" class="col-lg-2 control-label">Highlight</label>
 	  <div class="col-lg-10">
-		<input type="text" class="form-control" id="highlight" placeholder="I only threw up twice.">
+		<input type="text" class="form-control" id="highlight" placeholder="I only threw up twice." ng-model="formData.highlight">
 	  </div>
 	</div>
 	<div class="form-group">
       <label for="select" class="col-lg-2 control-label">Author</label>
-      <div class="col-lg-10">
-        <select class="form-control" id="select">
-          <option>Red</option>
-          <option>Saul</option>
-          <option>Dale Denton</option>
-        </select>
-      </div>
+		<div class="col-lg-10">
+			<input type="text" class="form-control" id="highlight" placeholder="Dale Denton" ng-model="formData.author">
+		</div>
     </div>		
 	<div class="form-group">
 	  <label for="textArea" class="col-lg-2 control-label">Textarea</label>
 	  <div class="col-lg-10">
-		<textarea class="form-control" rows="10" id="textArea"></textarea>
+		<textarea class="form-control" rows="10" id="textArea" ng-model="formData.body"></textarea>
 	  </div>
 	</div>			
 	<div class="form-group">
@@ -43,3 +39,7 @@
 	</div>
   </fieldset>
 </form>
+
+<pre>
+	{{ formData }}
+</pre>
