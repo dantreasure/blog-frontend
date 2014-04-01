@@ -7,21 +7,28 @@ var blogControllers = angular.module('blogControllers', []);
 blogControllers.controller('ArticleListCtrl', ['$scope', '$http',
 	function($scope, $http) {
 
-
-
 		$http.get('http://experimentblog8889.jit.su/posts').success(function(data) {
 			$scope.articles = data;
-			console.log($scope.articles)
 		});
+
+		$scope.delete = function ( idx ) {
+			console.log(idx);
+			todos.splice(todos.indexOf(todo), 1);
+		};
 
 }]);
 
 blogControllers.controller('ComposeCtrl', ['$scope', '$http',
 	function($scope, $http) {
+		$scope.formData = {};
+
+		$http.get('http://experimentblog8889.jit.su/users').success(function(data) {
+			$scope.writers = data;
+		});
 
 		$scope.submit = function () {
 
-			$scope.formData = {};
+			$scope.formData.author = $("option:selected").text();
 
 			$http({
 				method  : 'POST',
@@ -30,8 +37,7 @@ blogControllers.controller('ComposeCtrl', ['$scope', '$http',
 				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 			})
 				.success(function(data) {
-					console.log(data);
-
+					$scope.formData = {};
 					if (!data.success) {
 						// if not successful, bind errors to error variables
 						$scope.errorName = data.errors.name;
@@ -42,5 +48,14 @@ blogControllers.controller('ComposeCtrl', ['$scope', '$http',
 					}
 				});
 		};
+
+}]);
+
+blogControllers.controller('WritersCtrl', ['$scope', '$http',
+	function($scope, $http) {
+
+		$http.get('http://experimentblog8889.jit.su/users').success(function(data) {
+			$scope.writers = data;
+		});
 
 	}]);

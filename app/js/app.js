@@ -14,10 +14,15 @@ blogApp.config(function($stateProvider, $urlRouterProvider){
 			controller: "ArticleListCtrl"
 		})
 
+		.state('surprise', {
+			url: "/surprise",
+			templateUrl: "partials/blogPost.html"
+		})
+
 		.state('writers', {
 			url: "/writers",
 			templateUrl: "partials/writers.html",
-			controller: "ArticleListCtrl"
+			controller: "WritersCtrl"
 		})
 
 		.state('contact', {

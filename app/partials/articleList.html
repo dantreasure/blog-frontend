@@ -1,7 +1,7 @@
 <div class="jumbotron">
 	<h1>"I thought hurricane season was over"</h1>
 	<p>A collection of thoughts and other musings</p>
-	<p><a class="btn btn-primary btn-lg" role="button">Surprise Me!</a></p>
+	<p><a class="btn btn-primary btn-lg" role="button" ui-sref="surprise">Surprise Me!</a></p>
 </div>
 <!--  There are three <div class="col-sm-6 col-md-4"> per row. If there are more than three make a new row -->
 <div class="row">
@@ -18,6 +18,7 @@
         <p>
         	<a href="#" class="btn btn-primary" role="button">Read</a> 
         	<a href="#" class="btn btn-default" role="button">Share</a>
+			<button class="btn btn-danger" ng-click="delete(article)">Delete</button>
         </p>
       </div>
     </div>
