@@ -6,7 +6,7 @@ var blogControllers = angular.module('blogControllers', []);
 
 blogControllers.controller('ArticleListCtrl', ['$scope', '$http', '$stateParams',
 	function($scope, $http, $stateParams) {
-
+        alert("yo yo bitches");
 		$http.get('http://experimentblog8889.jit.su/posts').success(function(data) {
 			$scope.articles = data;
 		});

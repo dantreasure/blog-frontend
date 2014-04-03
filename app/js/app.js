@@ -5,7 +5,7 @@ var blogApp = angular.module('blogApp', [
 blogApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
 	// For any unmatched url, send to /route1
-	$urlRouterProvider.otherwise("/articles");
+	//$urlRouterProvider.otherwise("/articles");
 
 	$stateProvider
 		.state('articles', {
@@ -14,16 +14,16 @@ blogApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
 			controller: "ArticleListCtrl"
 		})
 
-			.state('articles.article', {
-				url: "/articles/:id",
-				templateUrl: "partials/blogPost.html",
-				controller: function ($stateParams) {
-					alert("hello");
-					var value = 5;
-					// If we got here from a url of /contacts/42
+        .state('articles.article', {
+            url: "/:id",
+            templateUrl: "partials/blogPost.html",
+            controller: function ($stateParams) {
+                alert($stateParams.id);
+                var value = 5;
+                // If we got here from a url of /contacts/42
 
-				}
-			})
+            }
+        })
 
 		.state('surprise', {
 			url: "/surprise",
