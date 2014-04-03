@@ -5,13 +5,23 @@ var blogApp = angular.module('blogApp', [
 blogApp.config(function($stateProvider, $urlRouterProvider){
 
 	// For any unmatched url, send to /route1
-	$urlRouterProvider.otherwise("/home");
+	//$urlRouterProvider.otherwise("/home");
 
 	$stateProvider
-		.state('home', {
-			url: "/home",
+		.state('articles', {
+			url: "/articles",
 			templateUrl: "partials/articleList.html",
 			controller: "ArticleListCtrl"
+		})
+
+		.state('article', {
+			url: "/articles/:id",
+			templateUrl: "partials/blogPost.html",
+			controller: function ($stateParams) {
+				var value = 5;
+				// If we got here from a url of /contacts/42
+
+			}
 		})
 
 		.state('surprise', {

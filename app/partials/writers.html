@@ -1,16 +1,58 @@
-<!--  There are three <div class="col-sm-6 col-md-4"> per row. If there are more than three divs, make a new row -->
 <div class="row">
-  <div class="col-sm-6 col-md-4" ng-repeat="writer in writers">
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<img src="img/person.png" alt="..." class="writer-thumbnail">
+			<div class="caption">
+				<form class="form-horizontal" name="new-writer" ng-submit="submit()">
+					<fieldset>
+						<legend>Join Us!</legend>
+						<div class="form-group">
+							<label for="name" class="col-lg-2 control-label">Name</label>
+							<div class="col-lg-10">
+								<input type="text" class="form-control" id="name" placeholder="Dale Denton" ng-model="formData.name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="bio" class="col-lg-2 control-label">Bio</label>
+							<div class="col-lg-10">
+								<input type="text" class="form-control" id="bio" placeholder="I wear kimonos." ng-model="formData.bio">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="age" class="col-lg-2 control-label">Age</label>
+							<div class="col-lg-10">
+								<input type="number" placeholder="36" class="form-control" id="age" ng-model="formData.age">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="email" class="col-lg-2 control-label">Email</label>
+							<div class="col-lg-10">
+								<input type="email" class="form-control" id="email" placeholder="twinkletoes99@hotmail.com" ng-model="formData.email">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-10">
+								<button class="btn btn-success" type="submit">Sign Up!</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-4" ng-repeat="writer in writers">
     <div class="thumbnail">
       <img src="img/person.png" alt="..." class="writer-thumbnail">
       <div class="caption">
         <h3>{{writer.name}}</h3>
+		<h4>{{writer.email}}</h4>
         <blockquote>
 		  <p>{{writer.bio}}</p>
 		</blockquote>
         <p>
         	<a href="#" class="btn btn-primary" role="button">Articles</a> 
         	<a href="#" class="btn btn-default" role="button">Share</a>
+			<button class="btn btn-danger" role="button" ng-click="delete(writer)">Delete</button>
         </p>
       </div>
     </div>
