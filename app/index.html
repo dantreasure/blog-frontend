@@ -1,0 +1,29 @@
+<html ng-app="blogApp">
+<head>
+	<title>Blog</title>
+	<link rel="shortcut icon" type="image/x-icon" href="img/pencil.png" />
+	<link rel="stylesheet" type="text/css" href="css/bootswatch.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<div class="btn-group-vertical" id="floating-nav-menu">
+		<a href="#" class="btn btn-primary" role="button" ui-sref="articles">Articles</a>
+		<a href="#" class="btn btn-success" role="button" ui-sref="writers">Writers</a>
+		<a href="#" class="btn btn-warning" role="button" ui-sref="contact">Contact Us</a>
+		<a href="#" class="btn btn-danger" role="button" ui-sref="compose">Compose</a>
+	</div>
+
+	<div class="container" id="main">
+		<div ui-view></div>
+	</div>
+
+	<!--libraries-->
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/angular.min.js"></script>
+	<script src="lib/angular-ui-router.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+	<!--application-->
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+</body>
+</html>
