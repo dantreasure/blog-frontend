@@ -6,7 +6,7 @@ var blogControllers = angular.module('blogControllers', []);
 
 blogControllers.controller('ArticleListCtrl', ['$scope', '$http', '$stateParams',
 	function($scope, $http, $stateParams) {
-		$http.get('http://experimentblog8889.jit.su/posts').success(function(data) {
+		$http.get('//localhost:5000/posts').success(function(data) {
 			$scope.articles = data;
 		});
 
@@ -36,7 +36,7 @@ blogControllers.controller('ComposeCtrl', ['$scope', '$http',
 	function($scope, $http) {
 		$scope.formData = {};
 
-		$http.get('http://experimentblog8889.jit.su/users').success(function(data) {
+		$http.get('//localhost:5000/users').success(function(data) {
 			$scope.writers = data;
 		});
 
@@ -46,7 +46,7 @@ blogControllers.controller('ComposeCtrl', ['$scope', '$http',
 
 			$http({
 				method  : 'POST',
-				url     : 'http://experimentblog8889.jit.su/posts',
+				url     : '//localhost:5000/posts',
 				data    : $.param($scope.formData),
 				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 			})
@@ -66,9 +66,12 @@ blogControllers.controller('ComposeCtrl', ['$scope', '$http',
 }]);
 
 blogControllers.controller('ArticleCtrl', ['$scope', '$http', '$stateParams',
-function($scope, $http, $stateParams){
-
-
+	function($scope, $http, $stateParams){
+		console.log('stateparams', $stateParams)
+		$http.get('//localhost:5000/posts/' + $stateParams.id).success(function(data) {
+			$scope.article = data;
+			console.log(data)
+		});
 
 }]);
 
@@ -77,7 +80,7 @@ blogControllers.controller('WritersCtrl', ['$scope', '$http',
 
 		$scope.formData = {};
 
-		$http.get('http://experimentblog8889.jit.su/users').success(function(data) {
+		$http.get('//localhost:5000/users').success(function(data) {
 			$scope.writers = data;
 		});
 
@@ -86,7 +89,7 @@ blogControllers.controller('WritersCtrl', ['$scope', '$http',
 
 			$http({
 				method  : 'DELETE',
-				url     : 'http://experimentblog8889.jit.su/users/' + idx._id,
+				url     : '//localhost:5000/users/' + idx._id,
 			})
 				.success(function(data) {
 					if (!data.success) {
@@ -105,7 +108,7 @@ blogControllers.controller('WritersCtrl', ['$scope', '$http',
 
 			$http({
 				method  : 'POST',
-				url     : 'http://experimentblog8889.jit.su/users/',
+				url     : '//localhost:5000/users/',
 				data    : $.param($scope.formData),
 				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 			})

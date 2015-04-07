@@ -14,16 +14,11 @@ blogApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
 			controller: "ArticleListCtrl"
 		})
 
-        .state('articles.article', {
-            url: "/:id",
-            templateUrl: "partials/blogPost.html",
-            controller: function ($stateParams) {
-                alert($stateParams.id);
-                var value = 5;
-                // If we got here from a url of /contacts/42
-
-            }
-        })
+	  .state('article', {
+	      url: "/articles/:id",
+	      templateUrl: "partials/blogPost.html",
+	      controller: "ArticleCtrl"
+	  })
 
 		.state('surprise', {
 			url: "/surprise",
